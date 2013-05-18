@@ -1,6 +1,7 @@
 package repeatedwords;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RepeatedWords {
@@ -11,16 +12,14 @@ public class RepeatedWords {
         this.repetedWordsList = new ArrayList<>();
     }
 
-    public String[] find(String T1, String T2) {
-        String[] tokensT1 = extractWords(T1);
-        String[] tokensT2 = extractWords(T2);
+    public String[] find(String Text1, String Text2) {
+        List<String> wordsListText1 = Arrays.asList(extractWords(Text1));
+        List<String> wordsListText2 = Arrays.asList(extractWords(Text2));
 
-        for (String wordT1 : tokensT1) {//escoger
-            for (String wordT2 : tokensT2) {//buscar
-                if (wordT1.equals(wordT2)) {//si es igual
-                    if (!repetedWordsList.contains(wordT1) && !wordT1.isEmpty()) {//si contiene
-                        addRepeatedWord(wordT1);
-                    }
+        for (String wordText1 : wordsListText1) {
+            if (wordsListText2.contains(wordText1)) {
+                if (!beInTheRepeatedWordsList(wordText1)) {
+                    addRepeatedWord(wordText1);
                 }
             }
         }
@@ -33,5 +32,9 @@ public class RepeatedWords {
 
     private void addRepeatedWord(String word) {
         this.repetedWordsList.add(word);
+    }
+
+    private boolean beInTheRepeatedWordsList(String word) {
+        return repetedWordsList.contains(word) || word.isEmpty();
     }
 }
