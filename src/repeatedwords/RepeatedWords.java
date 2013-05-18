@@ -26,8 +26,8 @@ public class RepeatedWords {
         return repetedWordsList.toArray(new String[repetedWordsList.size()]);
     }
 
-    private String[] extractWords(String T1) {
-        return T1.split("[ ,.;:]");
+    private String[] extractWords(String Text) {
+        return Text.split("[ ,.;:¡!¿?]");
     }
 
     private void addRepeatedWord(String word) {
