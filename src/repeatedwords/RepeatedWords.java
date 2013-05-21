@@ -7,14 +7,19 @@ import java.util.List;
 public class RepeatedWords {
 
     private List<String> repetedWordsList;
+    private String sourceText1;
+    private String sourceText2;
+    
 
-    public RepeatedWords() {
+    public RepeatedWords(String sourceText1, String sourceText2) {
+        this.sourceText1 = sourceText1;
+        this.sourceText2 = sourceText2;
         this.repetedWordsList = new ArrayList<>();
     }
 
-    public String[] find(String Text1, String Text2) {
-        List<String> wordsListText1 = Arrays.asList(extractWords(Text1));
-        List<String> wordsListText2 = Arrays.asList(extractWords(Text2));
+    public String[] find() {
+        List<String> wordsListText1 = Arrays.asList(extractWords(sourceText1));
+        List<String> wordsListText2 = Arrays.asList(extractWords(sourceText2));
 
         for (String wordText1 : wordsListText1) {
             if (wordsListText2.contains(wordText1)) {
